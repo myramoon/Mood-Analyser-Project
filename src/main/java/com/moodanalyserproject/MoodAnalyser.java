@@ -1,4 +1,4 @@
-/* Purpose: To refactor the code to take mood message in constructor */
+/* Purpose: To add code to handle exception if user provides invalid mood */
 package com.moodanalyserproject;
 
 public class MoodAnalyser {
@@ -9,10 +9,14 @@ public class MoodAnalyser {
     }
 
     public String analyseMood() {
-        if (message.contains("sad"))
-            return "SAD";
-        else
-            return "HAPPY";
+        try {
+            if (message.contains("sad"))
+                return "SAD";
+            else
+                return "HAPPY";
+        }   catch (NullPointerException exception) {
+                return "HAPPY";
+        }
     }
 }
 
